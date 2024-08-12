@@ -32,8 +32,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g514s"]
-radius = 27.0
-height = 70.0
+radius = 54.0
+height = 136.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -42,7 +42,6 @@ position = Vector2(0, 2)
 script = ExtResource("1_0kk23")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Joueur"]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jpm0r")
 animation = &"droite"
 

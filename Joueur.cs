@@ -5,12 +5,11 @@ public partial class Joueur : Area2D
 {
 
 [Export]
-private int SPEED = 400;
-
+private float SPEED = 400;
 private AnimatedSprite2D animatedSprite2D;
 private CollisionShape2D collisionShape2D;
 
-private Vector2 Velocity;
+private Vector2 velocity;
 private Vector2 screenSize;
 
 
@@ -27,22 +26,51 @@ private Vector2 screenSize;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Velocity = new Vector2();
-		if(Input.IsActionJustPressed("ui_right"))
+		velocity = new Vector2();
+		if(Input.IsActionPressed("ui_right"))
 		{
-			Velocity.X += 1;
+			velocity.X += 1;
 		}
-		if(Input.IsActionJustPressed("ui_left"))
+		if(Input.IsActionPressed("ui_left"))
 		{
-			Velocity.X -= 1;
+			velocity.X -= 1;
 		}
-		if(Input.IsActionJustPressed("ui_down"))
+		if(Input.IsActionPressed("ui_down"))
 		{
-			Velocity.Y += 1;
+			velocity.Y += 1;
 		}
-		if(Input.IsActionJustPressed("ui_up"))
+		if(Input.IsActionPressed("ui_up"))
 		{
-			Velocity.Y -= 1;
+			velocity.Y -= 1;
+		}
+
+
+
+		if(velocity.Length() > 0)
+		{
+			velocity = velocity.Normalized() * SPEED;
+			animatedSprite2D.Play();
+
+		}else
+		{
+			animatedSprite2D.Stop();
+		}
+
+		Position += velocity * (float)delta;
+
+		Position = new Vector2(
+			Math.Clamp(Position.X, 0, screenSize.X),
+			Math.Clamp(Position.Y, 0, screenSize.Y)
+
+		);
+
+		if(velocity.X != 0){
+			animatedSprite2D.Animation = "droite";
+			animatedSprite2D.FlipH = velocity.X < 0;
+			animatedSprite2D.FlipV = false;
+		}else if(velocity.Y != 0){
+			animatedSprite2D.Animation = "haut";
+			animatedSprite2D.FlipV = velocity.Y > 0;
 		}
 		
 	}
