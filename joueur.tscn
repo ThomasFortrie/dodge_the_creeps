@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ditdc6oo8ihbn"]
+[gd_scene load_steps=8 format=3 uid="uid://ditdc6oo8ihbn"]
 
+[ext_resource type="Script" path="res://Joueur.cs" id="1_0kk23"]
 [ext_resource type="Texture2D" uid="uid://dea5n4cu2dqip" path="res://art/playerGrey_walk1.png" id="1_elm02"]
 [ext_resource type="Texture2D" uid="uid://2jfpiabdla8g" path="res://art/playerGrey_walk2.png" id="2_d0icx"]
 [ext_resource type="Texture2D" uid="uid://dhyjf3djsgw6o" path="res://art/playerGrey_up1.png" id="3_38srr"]
@@ -38,6 +39,7 @@ height = 70.0
 
 [node name="Joueur" type="Area2D" parent="."]
 position = Vector2(0, 2)
+script = ExtResource("1_0kk23")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Joueur"]
 scale = Vector2(0.5, 0.5)
