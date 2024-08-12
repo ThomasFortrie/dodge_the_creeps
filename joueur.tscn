@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ditdc6oo8ihbn"]
+
+[ext_resource type="Texture2D" uid="uid://dea5n4cu2dqip" path="res://art/playerGrey_walk1.png" id="1_elm02"]
+[ext_resource type="Texture2D" uid="uid://2jfpiabdla8g" path="res://art/playerGrey_walk2.png" id="2_d0icx"]
+[ext_resource type="Texture2D" uid="uid://dhyjf3djsgw6o" path="res://art/playerGrey_up1.png" id="3_38srr"]
+[ext_resource type="Texture2D" uid="uid://ddk0rlpub040h" path="res://art/playerGrey_up2.png" id="4_4fdxy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpm0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_elm02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d0icx")
+}],
+"loop": true,
+"name": &"droite",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_38srr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4fdxy")
+}],
+"loop": true,
+"name": &"haut",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g514s"]
+radius = 27.0
+height = 70.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Joueur" type="Area2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Joueur"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jpm0r")
+animation = &"droite"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Joueur"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_g514s")
