@@ -51,6 +51,7 @@ height = 130.0
 [node name="Ennemi" type="RigidBody2D"]
 position = Vector2(200, 200)
 gravity_scale = 0.0
+linear_velocity = Vector2(1000, 0)
 script = ExtResource("1_3vjwo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

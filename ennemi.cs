@@ -18,10 +18,16 @@ public partial class ennemi : RigidBody2D
 	{
 		animatedSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
 		visibility = (VisibleOnScreenNotifier2D)GetNode("VisibleOnScreenNotifier2D");
+		visibility.Connect("screen_exited", new Callable(this, nameof(OnScreenExited)));
 		animatedSprite.Animation = animations[animationRandom.Next(0, animations.Length)];
 		animatedSprite.Play();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	
+	void OnScreenExited()
+	{
+		QueueFree();
+	}
+
+
+
 }

@@ -38,7 +38,6 @@ height = 136.0
 [node name="Node2D" type="Node2D"]
 
 [node name="Joueur" type="Area2D" parent="."]
-position = Vector2(0, 2)
 script = ExtResource("1_0kk23")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Joueur"]
